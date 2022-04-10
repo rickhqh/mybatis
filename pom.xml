@@ -21,6 +21,7 @@
         <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
         <lombok.version>1.18.22</lombok.version>
         <logback.version>1.2.6</logback.version>
+        <pagehelper.version>5.2.1</pagehelper.version>
     </properties>
 
     <dependencyManagement>
@@ -55,6 +56,11 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
 
         </dependencies>

@@ -3,7 +3,7 @@ package com.ydlclass;
 /**
  * @author 小松
  */
-public class PageHelper {
+public class PageHelper1 {
 //    public static Page PAGE=null;
 
     public static ThreadLocal<Page> TL=new ThreadLocal();//线程安全
