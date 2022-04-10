@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ydlclass.mapper.UserMapper">
+
+    <resultMap id="UserMapper" type="com.ydlclass.entity.User">
+        <id column="id" property="id"/>
+        <result column="user_name" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <sql id="sql">
+        id,user_name,password
+    </sql>
+
+
+    <update id="update">
+        update `user`
+        <set>
+            <if test="username!=null and username !=''">
+                user_name=#{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+        </set>
+        where id =#{id}
+    </update>
+
+    <delete id="deleteByIds">
+        delete from `user`
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+
+    </delete>
+
+    <!--    CONCAT('%',#{filename},'%')-->
+
+    <select id="selectAll" resultMap="UserMapper">
+        select <include refid="sql"></include>
+        from user
+    </select>
+
+
+    <select id="selectOne" resultType="com.ydlclass.entity.User">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
+
+    <select id="select" resultType="com.ydlclass.entity.User">
+        select *
+        from user
+        where username = #{username}
+          and password = #{password}
+    </select>
+
+    <select id="selectByUser" resultType="com.ydlclass.entity.User">
+
+        select * from user
+        <where>
+            <if test="id != null">
+                and id=#{id}
+            </if>
+            <if test="username != null and username!= ''">
+                and user_name=#{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password =#{password}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into `user` ( user_name, password)
+        values (#{username}, #{password})
+    </insert>
+    <insert id="insertByIds" parameterType="list">
+        insert into `user` (id,user_name,password) values
+        <foreach collection="users" item="user" separator=",">
+            (#{user.id},#{user.username},#{user.password})
+        </foreach>
+    </insert>
+
+
+</mapper>
