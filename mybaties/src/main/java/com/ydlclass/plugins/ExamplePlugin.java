@@ -32,7 +32,7 @@ public class ExamplePlugin implements Interceptor {
         BoundSql boundSql = ms.getBoundSql(args[1]);
         String sql = boundSql.getSql();
 //        改造sql
-        String newsql=sql+" limit "+ PageHelper.PAGE.getFrom()+","+PageHelper.PAGE.getOffset();
+        String newsql=sql+" limit "+ PageHelper.TL.get().getFrom()+","+PageHelper.TL.get().getOffset();
         SqlSource sqlsource= parameterObject -> new BoundSql(ms.getConfiguration(),newsql,null,args[1]);
 
 

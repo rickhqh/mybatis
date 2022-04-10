@@ -4,12 +4,20 @@ package com.ydlclass;
  * @author 小松
  */
 public class PageHelper {
-    public static Page PAGE=null;
+//    public static Page PAGE=null;
+
+    public static ThreadLocal<Page> TL=new ThreadLocal();//线程安全
+    static{
+        TL.set(new Page());
+    }
+
 
 //    第几条开始，偏移量
     public static void startPage(int from,int offset){
-        PAGE=new Page(from,offset);
-
+//        PAGE=new Page(from,offset);
+    Page page = TL.get();
+    page.setOffset(offset);
+    page.setFrom(from);
 
 
     }
@@ -37,6 +45,9 @@ public class PageHelper {
         public Page(int from, int offset) {
             this.from = from;
             this.offset = offset;
+        }
+
+        public Page() {
         }
     }
 
