@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.aprrffr6fr66ttggggggggggggggggache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
@@ -22,6 +22,7 @@
         <lombok.version>1.18.22</lombok.version>
         <logback.version>1.2.6</logback.version>
         <pagehelper.version>5.2.1</pagehelper.version>
+        <screw-core.version>1.0.3</screw-core.version>
     </properties>
 
     <dependencyManagement>
@@ -61,7 +62,14 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper</artifactId>
                 <version>${pagehelper.version}</version>
+
             </dependency>
+            <dependency>
+                <groupId>cn.smallbun.screw</groupId>
+                <artifactId>screw-core</artifactId>
+                <version>${screw-core.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

@@ -1,6 +1,5 @@
 
 import com.github.pagehelper.PageHelper;
-import com.ydlclass.PageHelper1;
 import com.ydlclass.mapper.UserMapper;
 import com.ydlclass.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -61,8 +60,6 @@ public class TestMybatis {
     @Test
     public void testid() {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-
-
             UserMapper mapper = session.getMapper(UserMapper.class);
             //获得一个代理对象 jdk.proxy 类,  代理对象实现了UserMappe的接口
             //mapper 和xml
